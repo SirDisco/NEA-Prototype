@@ -3,17 +3,15 @@
 #include <iostream>
 
 #include "Program/Program.h"
-#include "CreateAccountState.h"
-#include "DeleteAccountState.h"
 
 namespace NEA
 {
-	class AccountsState : public State
+	class CreateAccountState : public State
 	{
 	public:
 
-		AccountsState() {}
-		virtual ~AccountsState() {}
+		CreateAccountState() {}
+		virtual ~CreateAccountState() {}
 
 	public:
 
@@ -25,15 +23,15 @@ namespace NEA
 		{
 			printf("\n-------------------------------------------------\n\n");
 
+			printf("Place holder state. Nothing here for now\n\n");
+
 			printf("Please select an option\n\n");
-			printf("1) Create Account\n");
-			printf("2) Delete Account\n");
-			printf("3) Back\n");
+			printf("1) Back\n");
 
 			int input = -1;
 			std::cin >> input;
 
-			while (input < 1 || input > 3)
+			while (input < 1 || input > 1)
 			{
 				printf("Invalid Choice\n");
 				std::cin >> input;
@@ -42,12 +40,6 @@ namespace NEA
 			switch (input)
 			{
 			case 1:
-				Program::s_Instance->PushState(new CreateAccountState());
-				break;
-			case 2:
-				Program::s_Instance->PushState(new DeleteAccountState());
-				break;
-			case 3:
 				Program::s_Instance->PopState();
 				break;
 			}

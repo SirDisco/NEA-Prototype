@@ -157,7 +157,11 @@
     <ClInclude Include="src\Program\Program.h" />
     <ClInclude Include="src\Program\State.h" />
     <ClInclude Include="src\Program\States\AccountsState.h" />
+    <ClInclude Include="src\Program\States\CreateAccountState.h" />
+    <ClInclude Include="src\Program\States\DeleteAccountState.h" />
+    <ClInclude Include="src\Program\States\LeaderboardState.h" />
     <ClInclude Include="src\Program\States\MainMenuState.h" />
+    <ClInclude Include="src\Program\States\PlayState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

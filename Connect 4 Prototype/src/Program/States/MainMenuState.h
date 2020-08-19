@@ -3,6 +3,8 @@
 #include <iostream>
 
 #include "Program/Program.h"
+#include "PlayState.h"
+#include "LeaderboardState.h"
 #include "AccountsState.h"
 
 namespace NEA
@@ -43,10 +45,10 @@ namespace NEA
 			switch (input)
 			{
 			case 1:
-				// Add Play State
+				Program::s_Instance->PushState(new PlayState());
 				break;
 			case 2:
-				// Add Leaderboard State
+				Program::s_Instance->PushState(new LeaderboardState());
 				break;
 			case 3:
 				Program::s_Instance->PushState(new AccountsState());

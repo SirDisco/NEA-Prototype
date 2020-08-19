@@ -35,5 +35,17 @@
     <ClInclude Include="src\Program\States\AccountsState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Program\States\LeaderboardState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\States\PlayState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\States\CreateAccountState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\States\DeleteAccountState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
