@@ -32,5 +32,8 @@
     <ClInclude Include="src\Program\States\MainMenuState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Program\States\AccountsState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

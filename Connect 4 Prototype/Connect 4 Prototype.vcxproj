@@ -156,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="src\Program\Program.h" />
     <ClInclude Include="src\Program\State.h" />
+    <ClInclude Include="src\Program\States\AccountsState.h" />
     <ClInclude Include="src\Program\States\MainMenuState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

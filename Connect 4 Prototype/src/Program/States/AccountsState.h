@@ -3,16 +3,15 @@
 #include <iostream>
 
 #include "Program/Program.h"
-#include "AccountsState.h"
 
 namespace NEA
 {
-	class MainMenuState : public State
+	class AccountsState : public State
 	{
 	public:
 
-		MainMenuState() {}
-		virtual ~MainMenuState() {}
+		AccountsState() {}
+		virtual ~AccountsState() {}
 
 	public:
 
@@ -24,17 +23,15 @@ namespace NEA
 		{
 			printf("\n-------------------------------------------------\n\n");
 
-			printf("Welcome to Connect 4 with AI - Prototype\n\n");
 			printf("Please select an option\n\n");
-			printf("1) Play\n");
-			printf("2) Leaderboard\n");
-			printf("3) Accounts\n");
-			printf("4) Exit\n\n");
+			printf("1) Create Account\n");
+			printf("2) Delete Account\n");
+			printf("3) Back\n");
 
 			int input = -1;
 			std::cin >> input;
 
-			while (input < 1 || input > 4)
+			while (input < 1 || input > 3)
 			{
 				printf("Invalid Choice\n");
 				std::cin >> input;
@@ -43,15 +40,12 @@ namespace NEA
 			switch (input)
 			{
 			case 1:
-				// Add Play State
+				// Add Create Account State
 				break;
 			case 2:
-				// Add Leaderboard State
+				// Add Delete Account State
 				break;
 			case 3:
-				Program::s_Instance->PushState(new AccountsState());
-				break;
-			case 4:
 				Program::s_Instance->PopState();
 				break;
 			}
