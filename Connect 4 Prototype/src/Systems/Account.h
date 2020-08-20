@@ -3,6 +3,8 @@
 #include <string>
 #include <ctime>
 
+#include "NeuralNetwork.h"
+
 namespace NEA
 {
 	struct WinLosses
@@ -41,7 +43,7 @@ namespace NEA
 		WinLosses m_HumanStats;
 		WinLosses m_AIStats;
 
-		// Neural Network Here
+		NeuralNetwork* m_Network;
 
 	};
 }

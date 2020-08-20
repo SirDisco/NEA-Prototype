@@ -1,10 +1,13 @@
 #include "Account.h"
 
+#define NN_LAYER_SIZES { 7 * 6 * 3, 10, 10, 7 }
+
 namespace NEA
 {
 	Account::Account(std::string name, std::string password)
 		: m_Name(name), m_Password(password)
 	{
+		m_Network = new NeuralNetwork(NN_LAYER_SIZES);
 		m_DateCreated = std::time(nullptr);
 	}
 
