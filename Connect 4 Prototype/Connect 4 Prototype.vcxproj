@@ -153,6 +153,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Program\Program.cpp" />
     <ClCompile Include="src\Systems\Account.cpp" />
+    <ClCompile Include="src\Systems\NeuralNetwork.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Program\Program.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\Program\States\MainMenuState.h" />
     <ClInclude Include="src\Program\States\PlayState.h" />
     <ClInclude Include="src\Systems\Account.h" />
+    <ClInclude Include="src\Systems\NeuralNetwork.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
