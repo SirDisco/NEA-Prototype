@@ -28,7 +28,7 @@ namespace NEA
 			printf("Please select an option\n\n");
 			printf("1) Create Account\n");
 			printf("2) Delete Account\n");
-			printf("3) Back\n");
+			printf("3) Back\n\n");
 
 			int input = -1;
 			std::cin >> input;

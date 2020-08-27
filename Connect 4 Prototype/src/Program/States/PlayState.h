@@ -26,7 +26,7 @@ namespace NEA
 			printf("Place holder state. Nothing here for now\n\n");
 
 			printf("Please select an option\n\n");
-			printf("1) Back\n");
+			printf("1) Back\n\n");
 
 			int input = -1;
 			std::cin >> input;
