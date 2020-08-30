@@ -17,6 +17,42 @@ namespace NEA
 		Initialize();
 	}
 
+	NeuralNetwork::NeuralNetwork(char* data)
+	{
+		// Creates the neural network object from an array of bytes used to save to a file
+
+		int* fourBytePointer = (int*)data;
+
+		int layers = fourBytePointer[0];
+		m_Weights.reserve(layers);
+		m_Biases.reserve(layers);
+
+		int previousNeurons = fourBytePointer[1];
+
+		fourBytePointer += 2;
+
+		for (int i = 0; i < layers; i++)
+		{
+			int neurons = fourBytePointer[0];
+			fourBytePointer++;
+
+			m_Weights.emplace_back(Eigen::MatrixXf(neurons, previousNeurons));
+			m_Biases.emplace_back(Eigen::VectorXf(neurons, 1));
+
+			for (int j = 0; j < previousNeurons; j++)
+			{
+				memcpy(&m_Weights[i].col(j)[0], fourBytePointer, neurons * sizeof(float));
+				fourBytePointer += neurons;
+			}
+
+			memcpy(&m_Biases[i][0], fourBytePointer, neurons * sizeof(float));
+			fourBytePointer += neurons;
+
+			previousNeurons = neurons;
+		}
+
+	}
+
 	NeuralNetwork::~NeuralNetwork()
 	{
 	}
@@ -58,6 +94,61 @@ namespace NEA
 			m_Weights[i] -= scalar * nablaWeights[i];
 			m_Biases[i] -= scalar * nablaBiases[i];
 		}
+	}
+
+	char* NeuralNetwork::Serialize()
+	{
+		// Serializes the entire neural network into an array of bytes to be stored in a file
+
+		// Store the number of bytes required to serialize the NN
+		long long numberOfBytes = 0;
+
+		// Structure:
+		// sizeof(int) Bytes - Number of layers in network
+		numberOfBytes += sizeof(int);
+		// sizeof(int) Bytes - Number of Input Neurons
+		numberOfBytes += sizeof(int);
+		// For Each Layer
+		for (int i = 0; i < m_Weights.size(); i++)
+		{
+			// sizeof(int) Bytes - Number of neurons
+			numberOfBytes += sizeof(int);
+			// NoOfPreviousNeurons * NoOfNeurons * sizeof(float) Bytes - Weight Matrix
+			numberOfBytes += (long long)m_Weights[i].cols() * m_Weights[i].rows() * sizeof(float);
+			// NoOfNeurons * sizeof(float) - Bias Vector
+			numberOfBytes += (long long)m_Weights[i].rows() * sizeof(float);
+		}
+
+		char* data = new char[numberOfBytes];
+		int* fourBytePointer = (int*)data;
+
+		// Serialize into data variable
+
+		fourBytePointer[0] = (int)m_Weights.size();
+		fourBytePointer[1] = (int)m_Weights[0].cols();
+
+		fourBytePointer += 2;
+
+		for (int i = 0; i < m_Weights.size(); i++)
+		{
+			int previousNeurons = m_Weights[i].cols();
+			int currentNeurons = m_Weights[i].rows();
+
+			fourBytePointer[0] = currentNeurons;
+			fourBytePointer++;
+			for (int j = 0; j < previousNeurons; j++)
+			{
+				// Read column of weight matrix
+				memcpy(fourBytePointer, &m_Weights[i].col(j)[0], currentNeurons * sizeof(float));
+				fourBytePointer += currentNeurons;
+			}
+
+			// Read bias vector and store in byte array
+			memcpy(fourBytePointer, &m_Biases[i][0], currentNeurons * sizeof(float));
+			fourBytePointer += currentNeurons;
+		}
+		
+		return data;
 	}
 
 	void NeuralNetwork::Initialize()

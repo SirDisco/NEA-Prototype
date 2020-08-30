@@ -13,12 +13,15 @@ namespace NEA
 	public:
 
 		NeuralNetwork(std::vector<size_t> layerSizes);
+		NeuralNetwork(char* data);
 		virtual ~NeuralNetwork();
 
 	public:
 
 		Eigen::VectorXf FeedForward(Eigen::VectorXf input);
 		void Train(std::vector<TrainingExample> trainingData, float eta);
+
+		char* Serialize();
 
 	private:
 
