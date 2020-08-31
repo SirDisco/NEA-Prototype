@@ -6,6 +6,7 @@
 
 namespace NEA
 {
+	typedef std::pair<char*, size_t> BinaryData;
 	typedef std::pair<Eigen::VectorXf, Eigen::VectorXf> TrainingExample;
 
 	class NeuralNetwork
@@ -21,7 +22,7 @@ namespace NEA
 		Eigen::VectorXf FeedForward(Eigen::VectorXf input);
 		void Train(std::vector<TrainingExample> trainingData, float eta);
 
-		char* Serialize();
+		BinaryData Serialize();
 
 	private:
 

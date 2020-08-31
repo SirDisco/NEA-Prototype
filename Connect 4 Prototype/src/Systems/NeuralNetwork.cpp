@@ -96,7 +96,7 @@ namespace NEA
 		}
 	}
 
-	char* NeuralNetwork::Serialize()
+	BinaryData NeuralNetwork::Serialize()
 	{
 		// Serializes the entire neural network into an array of bytes to be stored in a file
 
@@ -148,7 +148,7 @@ namespace NEA
 			fourBytePointer += currentNeurons;
 		}
 		
-		return data;
+		return BinaryData(data, numberOfBytes);
 	}
 
 	void NeuralNetwork::Initialize()
