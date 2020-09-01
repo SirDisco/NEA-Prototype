@@ -26,7 +26,8 @@ namespace NEA
 		void SaveToFile();
 
 		inline const std::string& GetName() const { return m_Name; }
-		inline const std::string& GetPassword() const { return m_Password; }
+
+		inline bool PasswordMatches(std::string& password) const { return m_Password == password; }
 
 		inline const std::time_t& GetDateCreated() const { return m_DateCreated; }
 
