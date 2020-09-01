@@ -19,30 +19,124 @@ namespace NEA
 		{
 		}
 
+		bool CheckNameExists(std::string& name)
+		{
+			std::ifstream listOfUsers("res/Accounts/accounts.ls");
+
+			std::string line;
+			while (std::getline(listOfUsers, line))
+			{
+				if (name == line)
+				{
+					listOfUsers.close();
+					return true;
+				}
+			}
+
+			listOfUsers.close();
+
+			return false;
+		}
+
+		void RemoveAccount(std::string& user)
+		{
+			std::ifstream listOfUsers("res/Accounts/accounts.ls");
+
+			std::vector<std::string> users;
+
+			std::string line;
+			while (std::getline(listOfUsers, line))
+			{
+				if (line != user)
+					users.push_back(line);
+			}
+
+			listOfUsers.close();
+
+			std::ofstream output("res/Accounts/accounts.ls", std::ios::trunc);
+			for (std::string & u : users)
+				output << u << '\n';
+
+			output.close();
+
+			remove(("res/Accounts/Users/" + user + ".usr").c_str());
+
+			return;
+		}
+
 		void Execute() override
 		{
 			printf("\n-------------------------------------------------\n\n");
 
-			printf("Place holder state. Nothing here for now\n\n");
+			printf("Delete An Account\n");
+			printf("	- At any point type 'QUIT' to exit\n\n");
 
-			printf("Please select an option\n\n");
-			printf("1) Back\n\n");
+			std::string userName;
+			std::string password;
 
-			int input = -1;
-			std::cin >> input;
+			bool available = false;
+			
+			std::cin.ignore(1, '\n');
 
-			while (input < 1 || input > 1)
+			// Get Username from user
+
+			while (!available)
 			{
-				printf("Invalid Choice\n");
-				std::cin >> input;
+				printf("Please enter username: ");
+
+				std::getline(std::cin, userName);
+
+				if (userName._Equal("QUIT"))
+				{
+					Program::s_Instance->PopState();
+					return;
+				}
+				else
+				{
+					// Check username doesn't already exist
+					available = CheckNameExists(userName);
+				}
+
+				if (!available)
+					printf("\n	! Invalid Name !\n\n");
 			}
 
-			switch (input)
+			Account user(userName + ".usr");
+
+			// Check password matches
+
+			bool verified = false;
+			
+			//std::cin.ignore(1, '\n');
+
+			while (!verified)
 			{
-			case 1:
-				Program::s_Instance->PopState();
-				break;
+				printf("Please enter password: ");
+
+				std::getline(std::cin, password);
+
+				if (password._Equal("QUIT"))
+				{
+					Program::s_Instance->PopState();
+					return;
+				}
+				else
+				{
+					// Check password matches
+					verified = user.PasswordMatches(password);
+				}
+
+				if (!verified)
+					printf("\n	! Incorrect Password !\n\n");
 			}
+
+			// User exists and password matches so delete the account
+			RemoveAccount(userName);
+
+			printf("\nAccount Deleted Successfully\n");
+
+			Program::s_Instance->PopState();
+			return;
 		}
 
 	};
