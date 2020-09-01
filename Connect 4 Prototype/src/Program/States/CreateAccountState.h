@@ -53,14 +53,14 @@ namespace NEA
 			std::string password;
 
 			bool available = false;
+			
+			std::cin.ignore(1, '\n');
 
 			// Get Username from user
 
 			while (!available)
 			{
 				printf("Please enter username: ");
-
-				std::cin.ignore(1, '\n');
 
 				std::getline(std::cin, userName);
 
@@ -98,9 +98,9 @@ namespace NEA
 
 			// Add new account to list of accounts
 
-			std::ofstream listOfUsers("res/Accounts/accounts.ls", std::ios::ate);
+			std::ofstream listOfUsers("res/Accounts/accounts.ls", std::ios::app);
 
-			listOfUsers << userName;
+			listOfUsers << userName << '\n';
 
 			listOfUsers.close();
 
