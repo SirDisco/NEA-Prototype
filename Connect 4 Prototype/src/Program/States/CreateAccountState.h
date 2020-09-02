@@ -22,25 +22,6 @@ namespace NEA
 		{
 		}
 
-		bool CheckNameIsFree(std::string& name)
-		{
-			std::ifstream listOfUsers("res/Accounts/accounts.ls");
-
-			std::string line;
-			while (std::getline(listOfUsers, line))
-			{
-				if (name == line)
-				{
-					listOfUsers.close();
-					return false;
-				}
-			}
-
-			listOfUsers.close();
-
-			return true;
-		}
-
 		void Execute() override
 		{
 			printf("\n-------------------------------------------------\n\n");
@@ -108,6 +89,27 @@ namespace NEA
 			
 			Program::s_Instance->PopState();
 
+		}
+
+	private:
+
+		bool CheckNameIsFree(std::string& name)
+		{
+			std::ifstream listOfUsers("res/Accounts/accounts.ls");
+
+			std::string line;
+			while (std::getline(listOfUsers, line))
+			{
+				if (name == line)
+				{
+					listOfUsers.close();
+					return false;
+				}
+			}
+
+			listOfUsers.close();
+
+			return true;
 		}
 
 	};

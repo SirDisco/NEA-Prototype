@@ -19,25 +19,6 @@ namespace NEA
 		{
 		}
 
-		bool CheckNameExists(std::string& name)
-		{
-			std::ifstream listOfUsers("res/Accounts/accounts.ls");
-
-			std::string line;
-			while (std::getline(listOfUsers, line))
-			{
-				if (name == line)
-				{
-					listOfUsers.close();
-					return true;
-				}
-			}
-
-			listOfUsers.close();
-
-			return false;
-		}
-
 		void RemoveAccount(std::string& user)
 		{
 			std::ifstream listOfUsers("res/Accounts/accounts.ls");
@@ -137,6 +118,27 @@ namespace NEA
 
 			Program::s_Instance->PopState();
 			return;
+		}
+
+	private:
+
+		bool CheckNameExists(std::string& name)
+		{
+			std::ifstream listOfUsers("res/Accounts/accounts.ls");
+
+			std::string line;
+			while (std::getline(listOfUsers, line))
+			{
+				if (name == line)
+				{
+					listOfUsers.close();
+					return true;
+				}
+			}
+
+			listOfUsers.close();
+
+			return false;
 		}
 
 	};
