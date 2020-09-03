@@ -165,6 +165,9 @@
     <ClInclude Include="src\Program\States\MainMenuState.h" />
     <ClInclude Include="src\Program\States\PlayState.h" />
     <ClInclude Include="src\Systems\Account.h" />
+    <ClInclude Include="src\Systems\Connect 4\Connect4Account.h" />
+    <ClInclude Include="src\Systems\Connect 4\Connect4AI.h" />
+    <ClInclude Include="src\Systems\Connect 4\Connect4Human.h" />
     <ClInclude Include="src\Systems\NeuralNetwork.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
