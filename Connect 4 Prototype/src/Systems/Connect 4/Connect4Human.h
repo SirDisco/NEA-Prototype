@@ -15,7 +15,28 @@ namespace NEA
 
 		int GetColumnChoice(Connect4Board& layout, char character) override  // Needs to check if column is valid inside this method !!Very Important!!
 		{
+			printf("You are %c's\n", character);
 
+			PrintBoard(layout.GetBoard());
+
+			int choice = -1;
+
+			while (true)
+			{
+				printf("Enter column (1-7): ");
+				std::cin >> choice;
+
+				if (choice < 1 || choice > 7)
+				{
+					printf("Invalid column choice!\n");
+					continue;
+				}
+
+				if (layout.IsValidPosition(choice - 1))
+					return choice - 1;
+				else
+					printf("Column is full!\n");
+			}
 		}
 
 		void GameWon() override
