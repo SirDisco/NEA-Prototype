@@ -18,36 +18,7 @@ namespace NEA
 			auto board = layout.GetBoard();
 
 			// Turn the board into a different type for the NN to use
-			Eigen::VectorXf boardLayout(6 * 7 * 3, 1);
-			for (int i = 0; i < 6; i++)
-			{
-				for (int j = 0; j < 7; j++)
-				{
-					int index = 3 * (i * 7 + j);
-
-					if (board[j][i] == ' ')
-					{
-						// Empty position
-						boardLayout[index + 0] = 0.0f;
-						boardLayout[index + 1] = 0.0f;
-						boardLayout[index + 2] = 1.0f;
-					}
-					else if (board[j][i] == character)
-					{
-						// Your own counter
-						boardLayout[index + 0] = 0.0f;
-						boardLayout[index + 1] = 1.0f;
-						boardLayout[index + 2] = 0.0f;
-					}
-					else
-					{
-						// Enemies counter
-						boardLayout[index + 0] = 1.0f;
-						boardLayout[index + 1] = 0.0f;
-						boardLayout[index + 2] = 0.0f;
-					}
-				}
-			}
+			Eigen::VectorXf boardLayout = ConvertBoard(layout, character);
 
 			auto choices = m_Network->FeedForward(boardLayout);
 

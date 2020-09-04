@@ -21,6 +21,43 @@ namespace NEA
 
 	protected:
 
+		Eigen::VectorXf ConvertBoard(Connect4Board& board, char character)
+		{
+			auto boardArray = board.GetBoard();
+			Eigen::VectorXf boardLayout(6 * 7 * 3, 1);
+			for (int i = 0; i < 6; i++)
+			{
+				for (int j = 0; j < 7; j++)
+				{
+					int index = 3 * (i * 7 + j);
+
+					if (boardArray[j][i] == ' ')
+					{
+						// Empty position
+						boardLayout[index + 0] = 0.0f;
+						boardLayout[index + 1] = 0.0f;
+						boardLayout[index + 2] = 1.0f;
+					}
+					else if (boardArray[j][i] == character)
+					{
+						// Your own counter
+						boardLayout[index + 0] = 0.0f;
+						boardLayout[index + 1] = 1.0f;
+						boardLayout[index + 2] = 0.0f;
+					}
+					else
+					{
+						// Enemies counter
+						boardLayout[index + 0] = 1.0f;
+						boardLayout[index + 1] = 0.0f;
+						boardLayout[index + 2] = 0.0f;
+					}
+				}
+			}
+			
+			return boardLayout;
+		}
+
 		void PrintBoard(const char board[][6])
 		{
 			printf("\n");
