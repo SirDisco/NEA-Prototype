@@ -24,12 +24,8 @@ namespace NEA
 	public:
 
 		// Places the counter in the column given and returns if that place is valid
-		bool PlaceCounter(int column, char character)
+		void PlaceCounter(int column, char character)
 		{
-			// If there is a counter at the top of the column chosen then it is invalid
-			if (m_Board[column][0] != ' ')
-				return false;
-
 			// Loop downwards until a counter is found then place the new one above that
 			// Only need to loop from i = 1 as we know that the top space is open at least
 			for (int i = 1; i < 6; i++)
@@ -42,7 +38,7 @@ namespace NEA
 					m_RecentRow = i - 1;
 					m_RecentChar = character;
 
-					return true;
+					return;
 				}
 			}
 
@@ -53,6 +49,13 @@ namespace NEA
 			m_RecentColumn = column;
 			m_RecentRow = 5;
 			m_RecentChar = character;
+		}
+
+		bool IsValidPosition(int column)
+		{
+			// If there is a counter at the top of the column chosen then it is invalid
+			if (m_Board[column][0] != ' ')
+				return false;
 
 			return true;
 		}
