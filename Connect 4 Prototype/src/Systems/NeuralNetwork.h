@@ -1,6 +1,6 @@
 #pragma once
 
-#define ETA 1.0f
+#define ETA 5.0f
 
 #include <vector>
 
