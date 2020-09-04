@@ -26,7 +26,7 @@ namespace NEA
 
 		void Execute() override
 		{
-			printf("Congratulations %s. You've won!\n", m_Winner->GetName());
+			printf("Congratulations %s. You've won!\n", m_Winner->GetName().c_str());
 
 			m_Winner->GameWon();
 			m_Loser->GameLost();

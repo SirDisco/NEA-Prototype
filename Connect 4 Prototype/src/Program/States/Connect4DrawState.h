@@ -28,7 +28,7 @@ namespace NEA
 
 		void Execute() override
 		{
-			printf("It was a draw between %s and %s!\n", m_Player1->GetName(), m_Player2->GetName());
+			printf("It was a draw between %s and %s!\n", m_Player1->GetName().c_str(), m_Player2->GetName().c_str());
 			printf("No wins/losses will be added to your accounts!\n");
 
 			m_Player1->GameOver();
