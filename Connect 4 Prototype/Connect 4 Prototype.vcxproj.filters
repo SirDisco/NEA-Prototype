@@ -77,5 +77,11 @@
     <ClInclude Include="src\Systems\Connect 4\Connect4Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Program\States\Connect4WinState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Program\States\Connect4DrawState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

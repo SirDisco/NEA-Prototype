@@ -160,6 +160,8 @@
     <ClInclude Include="src\Program\Program.h" />
     <ClInclude Include="src\Program\State.h" />
     <ClInclude Include="src\Program\States\AccountsState.h" />
+    <ClInclude Include="src\Program\States\Connect4DrawState.h" />
+    <ClInclude Include="src\Program\States\Connect4WinState.h" />
     <ClInclude Include="src\Program\States\CreateAccountState.h" />
     <ClInclude Include="src\Program\States\DeleteAccountState.h" />
     <ClInclude Include="src\Program\States\LeaderboardState.h" />
