@@ -44,7 +44,7 @@ namespace NEA
 			// Repeat if no one has won or the game has been drawn
 		} while (!m_Board.GameOver());
 
-		// Pop state
+		Program::s_Instance->PopState();
 
 		if (m_Board.GameWon())
 		{
