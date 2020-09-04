@@ -15,5 +15,8 @@ namespace NEA
 
 		// int GetColumnChoice(board layout) override
 
+		void GameWon() override;
+		void GameLost() override;
+
 	};
 }

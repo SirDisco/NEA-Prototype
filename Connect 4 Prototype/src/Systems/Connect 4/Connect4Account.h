@@ -13,7 +13,10 @@ namespace NEA
 
 	public:
 
-		// virtual int GetColumnChoice(board state) = 0;
+		// virtual int GetColumnChoice(board state) = 0; // Needs to check if column is valid inside this method !!Very Important!!
+
+		virtual void GameWon() = 0;
+		virtual void GameLost() = 0;
 
 	};
 }
