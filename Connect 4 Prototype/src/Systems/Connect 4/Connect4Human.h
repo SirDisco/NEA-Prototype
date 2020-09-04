@@ -1,6 +1,9 @@
 #pragma once
 
+#include <vector>
+
 #include "Systems/Connect 4/Connect4Account.h"
+#include "Systems/NeuralNetwork.h"
 
 namespace NEA
 {
@@ -33,7 +36,10 @@ namespace NEA
 				}
 
 				if (layout.IsValidPosition(choice - 1))
+				{
+					SaveTrainingExample(layout, choice - 1, character);
 					return choice - 1;
+				}
 				else
 					printf("Column is full!\n");
 			}
@@ -43,15 +49,41 @@ namespace NEA
 		{
 			m_HumanStats.wins++;
 
-			// Also update neural network with training data saved in this class
+			m_Network->Train(m_TrainingSet, ETA);
+
+			m_TrainingSet.clear();
+
+			SaveToFile();
 		}
 
 		void GameLost() override
 		{
 			m_HumanStats.losses++;
 
-			// Also update neural network with training data saved in this class
+			m_Network->Train(m_TrainingSet, ETA);
+
+			m_TrainingSet.clear();
+
+			SaveToFile();
 		}
+
+	private:
+
+		void SaveTrainingExample(Connect4Board& board, int columnChoice, char character)
+		{
+			// Turn board into array of floats in correct format
+			Eigen::VectorXf boardVector = ConvertBoard(board, character);
+
+			// Turn column choice into correct format
+			Eigen::VectorXf choiceVector = Eigen::VectorXf::Zero(7);
+			choiceVector[columnChoice] = 1.0f;
+
+			m_TrainingSet.push_back({ boardVector, choiceVector });
+		}
+
+	private:
+
+		std::vector<TrainingExample> m_TrainingSet;
 
 	};
 }
