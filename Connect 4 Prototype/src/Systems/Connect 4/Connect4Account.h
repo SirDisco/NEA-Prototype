@@ -19,6 +19,8 @@ namespace NEA
 		virtual void GameWon() = 0;
 		virtual void GameLost() = 0;
 
+		virtual void GameOver() = 0;
+
 	protected:
 
 		Eigen::VectorXf ConvertBoard(Connect4Board& board, char character)

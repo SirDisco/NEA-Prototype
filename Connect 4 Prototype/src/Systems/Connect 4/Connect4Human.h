@@ -48,18 +48,15 @@ namespace NEA
 		void GameWon() override
 		{
 			m_HumanStats.wins++;
-
-			m_Network->Train(m_TrainingSet, ETA);
-
-			m_TrainingSet.clear();
-
-			SaveToFile();
 		}
 
 		void GameLost() override
 		{
 			m_HumanStats.losses++;
+		}
 
+		void GameOver() override
+		{
 			m_Network->Train(m_TrainingSet, ETA);
 
 			m_TrainingSet.clear();

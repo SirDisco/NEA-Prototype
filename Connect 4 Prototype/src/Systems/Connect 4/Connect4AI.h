@@ -60,5 +60,7 @@ namespace NEA
 			m_AIStats.losses++;
 		}
 
+		void GameOver() override {}
+
 	};
 }
