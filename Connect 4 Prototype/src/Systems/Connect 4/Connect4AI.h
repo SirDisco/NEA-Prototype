@@ -37,8 +37,11 @@ namespace NEA
 				{
 					if (choices[i] < max)
 					{
-						currentBest = std::max(currentBest, choices[i]);
-						choice = i;
+						if (choices[i] > currentBest)
+						{
+							currentBest = choices[i];
+							choice = i;
+						}
 					}
 				}
 
