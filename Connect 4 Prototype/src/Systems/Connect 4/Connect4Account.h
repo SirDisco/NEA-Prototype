@@ -14,7 +14,7 @@ namespace NEA
 
 	public:
 
-		virtual int GetColumnChoice(Connect4Board& state) = 0;
+		virtual int GetColumnChoice(Connect4Board& state, char character) = 0;
 
 		virtual void GameWon() = 0;
 		virtual void GameLost() = 0;
