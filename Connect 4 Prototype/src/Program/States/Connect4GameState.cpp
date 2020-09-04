@@ -8,11 +8,7 @@ namespace NEA
 	Connect4State::Connect4State(Connect4Account* player1, Connect4Account* player2)
 		: m_Player1(player1), m_Player2(player2) { }
 
-	Connect4State::~Connect4State()
-	{
-		delete m_Player1;
-		delete m_Player2;
-	}
+	Connect4State::~Connect4State() {}
 
 	void Connect4State::Initialize()
 	{
@@ -50,12 +46,18 @@ namespace NEA
 			// Repeat if no one has won or the game has been drawn
 		} while (!m_Board.GameOver());
 
-		Program::s_Instance->PopState();
+		Connect4Account* otherTurn = (currentTurn == m_Player1 ? m_Player2 : m_Player1);
 
 		if (m_Board.GameWon())
-			Program::s_Instance->PushState(new Connect4WinState(currentTurn, (currentTurn == m_Player1 ? m_Player2 : m_Player1)));
+		{
+			Program::s_Instance->PopState();
+			Program::s_Instance->PushState(new Connect4WinState(currentTurn, otherTurn));
+		}
 		else
-			Program::s_Instance->PushState(new Connect4DrawState(m_Player1, m_Player2));
+		{
+			Program::s_Instance->PopState();
+			Program::s_Instance->PushState(new Connect4DrawState(currentTurn, otherTurn));
+		}
 
 		return;
 
