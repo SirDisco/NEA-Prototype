@@ -34,9 +34,8 @@ namespace NEA
 			printf((currentTurn->GetName() + "'s Turn\n\n").c_str());
 
 			// Get Player/AI's column choice
-			int columnChoice = 0; // int columnChoice = currentTurn->GetColumnChoice(board);
-
 			char character = (currentTurn == m_Player1 ? '#' : '@');
+			int columnChoice = currentTurn->GetColumnChoice(m_Board, character);
 
 			// Place counter at that column
 			m_Board.PlaceCounter(columnChoice, character);
