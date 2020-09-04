@@ -37,8 +37,12 @@ namespace NEA
 			char character = (currentTurn == m_Player1 ? '#' : '@');
 			int columnChoice = currentTurn->GetColumnChoice(m_Board, character);
 
+			printf("%s chose column %i\n", currentTurn->GetName().c_str(), columnChoice + 1);
+
 			// Place counter at that column
 			m_Board.PlaceCounter(columnChoice, character);
+
+			printf("\n-------------------------------------------------\n\n");
 
 			// Repeat if no one has won or the game has been drawn
 		} while (!m_Board.GameOver());
