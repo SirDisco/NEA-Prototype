@@ -4,6 +4,7 @@
 #include <fstream>
 
 #include "Program/Program.h"
+#include "Connect4GameState.h"
 #include "Systems/Connect 4/Connect4Account.h"
 #include "Systems/Connect 4/Connect4AI.h"
 #include "Systems/Connect 4/Connect4Human.h"
@@ -47,7 +48,7 @@ namespace NEA
 				return;
 
 			Program::s_Instance->PopState();
-			//Program::s_Instance->PushState(Connect4State(player1, player2));
+			Program::s_Instance->PushState(new Connect4State(player1, player2));
 		}
 
 	private:
