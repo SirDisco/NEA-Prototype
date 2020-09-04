@@ -1,5 +1,7 @@
 #pragma once
 
+#define ETA 1.0f
+
 #include <vector>
 
 #include <Eigen/Dense>
