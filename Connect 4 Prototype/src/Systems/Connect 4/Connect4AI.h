@@ -15,8 +15,15 @@ namespace NEA
 
 		// int GetColumnChoice(board layout) override
 
-		void GameWon() override;
-		void GameLost() override;
+		void GameWon() override
+		{
+			m_AIStats.wins++;
+		}
+
+		void GameLost() override
+		{
+			m_AIStats.losses++;
+		}
 
 	};
 }

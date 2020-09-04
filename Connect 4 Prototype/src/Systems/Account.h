@@ -34,17 +34,19 @@ namespace NEA
 		inline WinLosses& GetHumanStats() { return m_HumanStats; }
 		inline WinLosses& GetAIStats() { return m_AIStats; }
 
+	protected:
+
+		WinLosses m_HumanStats;
+		WinLosses m_AIStats;
+
+		NeuralNetwork* m_Network;
+
 	private:
 
 		std::string m_Name;
 		std::string m_Password;
 
 		std::time_t m_DateCreated;
-
-		WinLosses m_HumanStats;
-		WinLosses m_AIStats;
-
-		NeuralNetwork* m_Network;
 
 	};
 }

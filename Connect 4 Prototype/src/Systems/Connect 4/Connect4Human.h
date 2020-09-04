@@ -15,8 +15,19 @@ namespace NEA
 
 		// int GetColumnChoice(board layout) override
 
-		void GameWon() override;
-		void GameLost() override;
+		void GameWon() override
+		{
+			m_HumanStats.wins++;
+
+			// Also update neural network with training data saved in this class
+		}
+
+		void GameLost() override
+		{
+			m_HumanStats.losses++;
+
+			// Also update neural network with training data saved in this class
+		}
 
 	};
 }
