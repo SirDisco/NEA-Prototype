@@ -25,7 +25,7 @@ namespace NEA
 
 		void SaveToFile();
 
-		inline const std::string& GetName() const { return m_Name; }
+		virtual inline const std::string GetName() const { return m_Name; }
 
 		inline bool PasswordMatches(std::string& password) const { return m_Password == password; }
 
@@ -41,9 +41,10 @@ namespace NEA
 
 		NeuralNetwork* m_Network;
 
+		std::string m_Name;
+
 	private:
 
-		std::string m_Name;
 		std::string m_Password;
 
 		std::time_t m_DateCreated;

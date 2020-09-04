@@ -13,6 +13,8 @@ namespace NEA
 
 	public:
 
+		inline const std::string GetName() const override { return std::string(m_Name + "'s AI"); }
+
 		int GetColumnChoice(Connect4Board& layout, char character) override  // Needs to check if column is valid inside this method !!Very Important!!
 		{
 			auto board = layout.GetBoard();
