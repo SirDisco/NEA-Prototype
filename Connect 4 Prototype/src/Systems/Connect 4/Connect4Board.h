@@ -127,6 +127,8 @@ namespace NEA
 			return true;
 		}
 
+		const auto GetBoard() { return m_Board; }
+
 	private:
 
 		// Current state of the board
