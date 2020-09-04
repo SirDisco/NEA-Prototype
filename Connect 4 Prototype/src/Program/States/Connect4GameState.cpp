@@ -1,5 +1,8 @@
 #include "Connect4GameState.h"
 
+#include "Connect4WinState.h"
+#include "Connect4DrawState.h"
+
 namespace NEA
 {
 	Connect4State::Connect4State(Connect4Account* player1, Connect4Account* player2)
@@ -50,13 +53,9 @@ namespace NEA
 		Program::s_Instance->PopState();
 
 		if (m_Board.GameWon())
-		{
-			// Push win state
-		}
+			Program::s_Instance->PushState(new Connect4WinState(currentTurn, (currentTurn == m_Player1 ? m_Player2 : m_Player1)));
 		else
-		{
-			// Push draw state
-		}
+			Program::s_Instance->PushState(new Connect4DrawState(m_Player1, m_Player2));
 
 		return;
 
