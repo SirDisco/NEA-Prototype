@@ -18,7 +18,8 @@ namespace NEA
 
 	public:
 
-		void PlaceCounter(int column, char character)
+		// Places the counter in the column given and returns if that place is valid
+		bool PlaceCounter(int column, char character)
 		{
 
 		}

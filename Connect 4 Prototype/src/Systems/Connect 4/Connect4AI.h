@@ -13,7 +13,10 @@ namespace NEA
 
 	public:
 
-		// int GetColumnChoice(board layout) override
+		int GetColumnChoice(Connect4Board layout) override  // Needs to check if column is valid inside this method !!Very Important!!
+		{
+
+		}
 
 		void GameWon() override
 		{
