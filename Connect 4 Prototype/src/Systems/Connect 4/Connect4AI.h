@@ -17,8 +17,6 @@ namespace NEA
 		{
 			auto board = layout.GetBoard();
 
-			PrintBoard(board);
-
 			// Turn the board into a different type for the NN to use
 			Eigen::VectorXf boardLayout(6 * 7 * 3, 1);
 			for (int i = 0; i < 6; i++)

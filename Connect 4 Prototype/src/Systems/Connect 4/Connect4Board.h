@@ -113,8 +113,8 @@ namespace NEA
 				// If 4 or more counters were found then the game has been won
 				if (inARow >= 4)
 					return true;
-				return false;
 			}
+			return false;
 		}
 
 		bool GameDrawn()

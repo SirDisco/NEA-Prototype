@@ -24,7 +24,7 @@ namespace NEA
 		void PrintBoard(const char board[][6])
 		{
 			printf("\n");
-			printf(" 1   2   3   4   5   6   7\n");
+			printf(" 1 2 3 4 5 6 7\n");
 
 			for (int i = 0; i < 6; i++)
 			{
