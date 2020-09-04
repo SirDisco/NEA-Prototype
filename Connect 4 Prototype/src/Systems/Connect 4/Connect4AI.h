@@ -13,7 +13,7 @@ namespace NEA
 
 	public:
 
-		int GetColumnChoice(Connect4Board layout) override  // Needs to check if column is valid inside this method !!Very Important!!
+		int GetColumnChoice(Connect4Board& layout) override  // Needs to check if column is valid inside this method !!Very Important!!
 		{
 
 		}
