@@ -45,7 +45,7 @@ namespace NEA
 
 				std::getline(std::cin, userName);
 
-				if (userName._Equal("QUIT"))
+				if (strcmp(userName.c_str(), "QUIT"))
 				{
 					Program::s_Instance->PopState();
 					return;
@@ -66,7 +66,7 @@ namespace NEA
 
 			std::getline(std::cin, password);
 
-			if (password._Equal("QUIT"))
+			if (strcmp(password.c_str(), "QUIT"))
 			{
 				Program::s_Instance->PopState();
 				return;

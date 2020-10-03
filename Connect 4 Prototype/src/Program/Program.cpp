@@ -1,5 +1,7 @@
 #include "Program.h"
 
+#include <cstdio>
+
 namespace NEA
 {
 	Program* Program::s_Instance = nullptr;
